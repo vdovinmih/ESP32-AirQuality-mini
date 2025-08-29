@@ -1,3 +1,5 @@
+![Static Badge](https://img.shields.io/badge/No-AI-blue)
+
 # ESP32-AirQuality-mini
 AirQuality zigbee mini sensor ESP32
 
