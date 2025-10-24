@@ -1,10 +1,12 @@
 #include "Adafruit_AGS02MA.h"
 #include "Adafruit_AHTX0.h"
+#include "board_defines.h"
+#include "i2c_scaner.h"
 
 constexpr byte TVOC_ADDRESS = 0x1A;
 constexpr byte TEMP_ADDRESS = 0x38;
 
-constexpr byte I2C_SDA = 13, I2C_SCL = 14;
+// constexpr byte I2C_SDA = 13, I2C_SCL = 14;
 
 Adafruit_AGS02MA ags;
 Adafruit_AHTX0 aht;
@@ -56,10 +58,13 @@ void setup() {
   Wire.begin(I2C_SDA, I2C_SCL);
   Serial.println(F("done."));
 
+  I2Cscaner();
+  delay(1000);
+
   ags.begin(&Wire, TVOC_ADDRESS);
 
-    ags.printSensorDetails();
-  delay(100);
+  ags.printSensorDetails();
+  delay(1000);
 
   aht.begin(&Wire, TEMP_ADDRESS);
   aht.getTemperatureSensor()->printSensorDetails();
